@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>The Real Cost of Educating a Girl in Pakistan - 3D Mobile Game</title>
+  <link rel="stylesheet" href="/css/player.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- Three.js 3D Engine CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="/js/character-3d.js"></script>
+</head>
+<body>
+  <!-- 3D Smartphone Device Chassis Outer Frame for Desktop Preview -->
+  <div class="phone-device-chassis">
+    <!-- Dynamic Island / Speaker Notch -->
+    <div class="phone-dynamic-island">
+      <div class="camera-lens"></div>
+      <div class="sensor-dot"></div>
+    </div>
+    <div class="phone-side-button power"></div>
+    <div class="phone-side-button volume-up"></div>
+    <div class="phone-side-button volume-down"></div>
+
+    <div class="mobile-app-wrapper">
+      <!-- Phone Top Status Bar (9:41, WiFi, Battery) -->
+      <div class="phone-status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <span>📶</span>
+          <span>📡</span>
+          <span>🔋</span>
+        </div>
+      </div>
+
+      <!-- Header Pills Row matching Mockup: Region Pill (Left) & PKR Coin Badge (Right) -->
+      <header class="game-header-bar">
+        <div class="persona-tag-pill" id="headerRegionPill">
+          <span class="pin-icon">📍</span>
+          <span id="headerRegionText">Sindh</span>
+        </div>
+
+        <div class="timer-countdown-pill" id="timerCountdownPill">
+          <span>⏱️</span>
+          <span id="timerText">00:45</span>
+        </div>
+
+        <div class="currency-coin-badge" id="headerCoinBadge">
+          <span class="coin-icon">🪙</span>
+          <span id="headerCoinText">PKR 4,800</span>
+        </div>
+      </header>
+
+      <!-- 1. Dedicated Candy Crush Style 3D Level Roadmap & Rules Welcome Screen (Shown First on Scan) -->
+      <main class="welcome-screen-wrapper" id="welcomeScreenWrapper">
+        <div class="welcome-top-badge-card">
+          <div class="welcome-pill-badge">🎮 3D INTERACTIVE SIMULATION</div>
+          <h1 class="welcome-main-title">THE REAL COST OF EDUCATING A GIRL</h1>
+          <p class="welcome-sub-subtitle">Based on 1,000 Household Survey Data across Pakistan</p>
+        </div>
+
+        <!-- Candy Crush Style Level Path Roadmap Card (2-Column Compact Grid) -->
+        <section class="candy-roadmap-card">
+          <div class="candy-card-header">
+            <span class="candy-header-title">🗺️ TERM EXPENSE ROADMAP</span>
+            <span class="candy-header-tag" id="welcomeRegionTag">📍 Sindh Household</span>
+          </div>
+
+          <!-- 2-Column Compact Grid of 6 Level Nodes -->
+          <div class="candy-grid-two-col">
+            <!-- Level 1 -->
+            <div class="candy-mini-node active">
+              <span class="mini-node-icon">🏠</span>
+              <div class="mini-node-text">
+                <strong style="color: #047857;">L1: Admission</strong>
+                <span>School Entry Fee</span>
+              </div>
+            </div>
+
+            <!-- Level 2 -->
+            <div class="candy-mini-node locked">
+              <span class="mini-node-icon">📚</span>
+              <div class="mini-node-text">
+                <strong>L2: Books & Uniform</strong>
+                <span>Textbooks & Shoes</span>
+              </div>
+            </div>
+
+            <!-- Level 3 -->
+            <div class="candy-mini-node locked">
+              <span class="mini-node-icon">🏫</span>
+              <div class="mini-node-text">
+                <strong>L3: School Funds</strong>
+                <span>Exam & Fines</span>
+              </div>
+            </div>
+
+            <!-- Level 4 -->
+            <div class="candy-mini-node locked">
+              <span class="mini-node-icon">🎟️</span>
+              <div class="mini-node-text">
+                <strong>L4: Board Ticket</strong>
+                <span>Admit Ticket</span>
+              </div>
+            </div>
+
+            <!-- Level 5 -->
+            <div class="candy-mini-node locked">
+              <span class="mini-node-icon">🛺</span>
+              <div class="mini-node-text">
+                <strong>L5: Daily Transit</strong>
+                <span>Rickshaw Fare</span>
+              </div>
+            </div>
+
+            <!-- Level 6 -->
+            <div class="candy-mini-node locked">
+              <span class="mini-node-icon">🍱</span>
+              <div class="mini-node-text">
+                <strong>L6: Outcome</strong>
+                <span>Term Receipt</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Waving Character Avatar Row -->
+          <div class="roadmap-character-stage">
+            <div class="roadmap-speech-bubble">
+              <span style="font-weight: 700; color: #1E3A8A;">Fatima:</span> "Assalamu Alaikum! Help me navigate 6 school expense levels without running out of float!"
+              <div class="roadmap-bubble-arrow"></div>
+            </div>
+            <img src="/assets/character.png" alt="3D Fatima" class="standing-character-img happy" style="height: 100px;">
+          </div>
+        </section>
+
+        <!-- Game Rules & Instructions Box -->
+        <section class="welcome-rules-box">
+          <h3 class="rules-box-heading">⚡ HOW TO PLAY</h3>
+
+          <div class="rules-three-row">
+            <div class="rule-mini-pill">
+              <span>📌</span>
+              <div><strong>1. School Float</strong><br>Manage PKR 4,800 reserves</div>
+            </div>
+            <div class="rule-mini-pill">
+              <span>🔒</span>
+              <div><strong>2. Squeeze Lock</strong><br>Pay locks when float empty</div>
+            </div>
+            <div class="rule-mini-pill">
+              <span>⚠️</span>
+              <div><strong>3. Borrow/Cut</strong><br>Take debt or sacrifice needs</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Ready to Play Game Button -->
+        <button class="btn-tactile btn-ready-play" id="btnStartGame">
+          <span style="font-weight: 900; font-size: 15px;">READY TO PLAY GAME ➔</span>
+          <span style="font-size: 10.5px; opacity: 0.9;">Start Level 1: Household Admission</span>
+        </button>
+      </main>
+
+      <!-- 2. Actual Gameplay Container (Revealed Only After Clicking READY TO PLAY GAME) -->
+      <main class="gameplay-stage-wrapper hidden-screen" id="gameplayStageWrapper">
+        <!-- 3D Town Roadmap Section -->
+        <section class="town-roadmap-wrapper" id="roadmapContainer"></section>
+
+        <!-- 3D Standing Character Stage with Dynamic Round 3D Scenery Backdrop -->
+        <section class="character-outdoor-stage-card">
+          <!-- Urdu Speech Bubble Quote Box (Positioned Above Room Frame to Prevent Head Overlap) -->
+          <div class="urdu-speech-bubble-gaming" id="characterSpeechBubbleBox">
+            <div class="speech-header-row">
+              <span class="sparkle-icon">✨</span>
+              <span class="character-name-age" id="speechCharName">Fatima (10 yrs)</span>
+            </div>
+            <div class="urdu-quote-text" id="characterUrduQuote">
+              السلام علیکم ! میں اسکول جانا چاہتی ہوں، کیا آپ میری مدد کریں گے؟
+            </div>
+          </div>
+
+          <div class="scenery-background-frame" id="sceneryFrame">
+            <!-- Soft Ground Ellipse Shadow beneath Feet -->
+            <div class="ground-shadow-ellipse"></div>
+
+            <!-- High-Res Pixar 3D Standing Character Avatar -->
+            <img src="/assets/character.png" alt="3D Standing Pakistani Schoolgirl" id="characterStandingImg" class="standing-character-img happy">
+          </div>
+
+          <!-- Household Persona Details -->
+          <div class="character-title-row">
+            <span class="character-title-text" id="charNameText">Schoolgirl Household</span>
+            <span class="round-badge-pill" id="headerRoundPill">Round 1 of 6</span>
+          </div>
+          <div class="character-desc-text" id="charSubtitleText">Class 10 • Daily Wage Worker</div>
+        </section>
+
+        <!-- Float Slack Meter Card -->
+        <section class="float-hud-card">
+          <div class="float-header-row">
+            <span>SCHOOLING FLOAT SLACK</span>
+            <span id="incomeText">Income: PKR 14,000/mo</span>
+          </div>
+          <div class="float-amount" id="floatAmountText">PKR 4,800</div>
+          <div class="float-progress-track">
+            <div class="float-progress-bar" id="floatProgressBar"></div>
+          </div>
+        </section>
+
+        <!-- Paperclip Note Decision Card Layout -->
+        <section class="paperclip-note-card" id="decisionCard">
+          <div class="paperclip-icon">📎</div>
+          <div class="note-title-header" id="stageTitleText">ROUND 1: ADMISSION & REGISTRATION</div>
+
+          <div class="note-details-box">
+            <div class="note-detail-label" id="stageDetailLabel">Priced Term Expense</div>
+            <div class="note-detail-cost" id="stageCostText">PKR 2,020</div>
+          </div>
+
+          <!-- Tactile 3D Buttons -->
+          <div class="tactile-buttons-grid">
+            <button class="btn-tactile btn-tactile-pay" id="btnPay">
+              <span>Pay Out of School Float</span>
+              <span id="paySubtext" style="font-weight: 800;">-PKR 2,020</span>
+            </button>
+
+            <button class="btn-tactile btn-tactile-borrow" id="btnBorrow">
+              <div class="btn-icon-circle">✓</div>
+              <div style="font-weight: 800; font-size: 14px;">BORROW</div>
+              <div style="font-size: 10px; opacity: 0.9;">(+Debt)</div>
+            </button>
+
+            <button class="btn-tactile btn-tactile-cut" id="btnCut">
+              <div class="btn-icon-circle">✕</div>
+              <div style="font-weight: 800; font-size: 14px;">CUT</div>
+              <div style="font-size: 10px; color: #2563EB;">(She goes without)</div>
+            </button>
+          </div>
+
+          <div class="hard-rule-prompt-box">
+            When cost exceeds remaining float, the "Pay" button locks — only "Borrow" (+debt) or "Cut" (she goes without) can be chosen.
+          </div>
+        </section>
+
+        <!-- Presenter-Locked 3D Waiting Sync Card (Shown after submitting choice) -->
+        <section class="paperclip-note-card waiting-card" id="waitingCard" style="display: none;">
+          <div class="waiting-icon-pulse">⌛</div>
+          <h3 class="waiting-title">CHOICE SUBMITTED!</h3>
+          <p class="waiting-desc">Waiting for Presenter on Projector to advance to Next Round...</p>
+          <div class="sync-status-badge">
+            <span class="sync-dot"></span>
+            <span id="waitingStageNameText">Round 1 Complete</span>
+          </div>
+        </section>
+
+        <!-- Verdict Card (Hidden until End) -->
+        <section class="paperclip-note-card thank-you-verdict-card" id="verdictCard" style="display: none;">
+          <div class="thank-you-header-box">
+            <span class="thank-you-badge">🎉 SIMULATION COMPLETE</span>
+            <h2 class="thank-you-title">THANK YOU FOR PLAYING!</h2>
+            <p class="thank-you-subtitle">You have navigated all 6 schooling cost rounds for Fatima.</p>
+          </div>
+
+          <h3 style="font-size: 14px; font-weight: 800; text-align: center; margin: 12px 0 4px 0;">TERM EXPENSE RECEIPT</h3>
+          <p style="font-size: 11px; color: #64748B; text-align: center; margin-bottom: 12px;" id="verdictHouseholdSubtitle"></p>
+
+          <div id="receiptItemsContainer"></div>
+
+          <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 15px; margin-top: 10px; padding-top: 8px; border-top: 2px solid #0F172A;">
+            <span>TOTAL EXPENSE</span>
+            <span id="receiptTotalText">PKR 0</span>
+          </div>
+
+          <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 14px; padding: 12px; margin-top: 12px; font-size: 11.5px; color: #1E40AF; line-height: 1.45;" id="pivotStatementBox">
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="/js/report-data.js"></script>
+  <script src="/js/roadmap-3d.js"></script>
+  <script src="/js/player.js"></script>
+</body>
+</html>
+

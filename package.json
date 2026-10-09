@@ -1,0 +1,14 @@
+{
+  "name": "pakistan-girls-education-game",
+  "version": "1.0.0",
+  "description": "Live presenter-led 3D interactive audience game - The Real Cost of Educating a Girl in Pakistan",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}

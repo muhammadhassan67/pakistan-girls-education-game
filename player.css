@@ -1,0 +1,1399 @@
+/* Mobile Gaming UI - 3D Smartphone Frame & Outdoor Scenery Stage */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Nastaliq+Urdu:wght@500;700&family=JetBrains+Mono:wght@700&display=swap');
+
+:root {
+  --primary-emerald: #10B981;
+  --dark-emerald: #047857;
+  --bg-sky: #7DD3FC;
+  --card-white: #FFFFFF;
+  --text-dark: #0F172A;
+  --text-muted: #64748B;
+  --shadow-3d: 0 12px 28px -6px rgba(16, 185, 129, 0.2), 0 4px 10px rgba(0, 0, 0, 0.06);
+  --shadow-chassis: 0 30px 60px -12px rgba(0, 0, 0, 0.65), 0 18px 36px -18px rgba(0, 0, 0, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #090D16;
+  color: var(--text-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 3D Smartphone Chassis Container (Renders as 3D Device on Desktop, Responsive on Mobile) */
+.phone-device-chassis {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  max-height: 880px;
+  background: #1E293B;
+  border-radius: 44px;
+  padding: 8px;
+  box-shadow: var(--shadow-chassis);
+  border: 4px solid #334155;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Dynamic Island / Speaker Notch */
+.phone-dynamic-island {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 24px;
+  background: #000000;
+  border-radius: 18px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+}
+
+.camera-lens {
+  width: 10px;
+  height: 10px;
+  background: #0F172A;
+  border: 2px solid #1E293B;
+  border-radius: 50%;
+}
+
+.sensor-dot {
+  width: 5px;
+  height: 5px;
+  background: #064E3B;
+  border-radius: 50%;
+}
+
+/* Side Buttons for Phone Frame */
+.phone-side-button {
+  position: absolute;
+  background: #334155;
+  border-radius: 4px;
+}
+
+.phone-side-button.power {
+  right: -8px;
+  top: 100px;
+  width: 4px;
+  height: 50px;
+}
+
+.phone-side-button.volume-up {
+  left: -8px;
+  top: 90px;
+  width: 4px;
+  height: 35px;
+}
+
+.phone-side-button.volume-down {
+  left: -8px;
+  top: 135px;
+  width: 4px;
+  height: 35px;
+}
+
+/* Mobile App Viewport Inner Wrapper */
+.mobile-app-wrapper {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #7DD3FC 0%, #BAE6FD 35%, #F0FDF4 70%, #FFFFFF 100%);
+  border-radius: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  padding: 6px 10px 10px 10px;
+  box-sizing: border-box;
+}
+
+/* Phone Status Bar (9:41 Time & Icons) */
+.phone-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px 6px 24px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #0F172A;
+  z-index: 150;
+}
+
+.status-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+
+.status-icons {
+  display: flex;
+  gap: 6px;
+  font-size: 10px;
+}
+
+/* Header Bar Row (Pills & Badges) */
+.game-header-bar {
+  padding: 6px 14px 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 100;
+}
+
+/* Glossy 3D Region Pill (Matching Reference Screenshot) */
+.persona-tag-pill {
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 12px;
+  color: #0F172A;
+}
+
+.pin-icon {
+  font-size: 13px;
+}
+
+/* 2-Minute Timer Pill */
+.timer-countdown-pill {
+  background: #FEF3C7;
+  color: #B45309;
+  border: 1.5px solid #FCD34D;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.15);
+}
+
+.timer-countdown-pill.urgent {
+  background: #FEE2E2;
+  color: #DC2626;
+  border-color: #FCA5A5;
+  animation: pulse-urgent 1s infinite alternate;
+}
+
+@keyframes pulse-urgent {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+/* Currency PKR Coin Badge (Matching Reference Screenshot) */
+.currency-coin-badge {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #FFFFFF;
+  border: 1.5px solid #FBBF24;
+  padding: 5px 14px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 12px;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+}
+
+/* Float Slack HUD Meter */
+.float-hud-card {
+  margin: 6px 12px;
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 12px 14px;
+  box-shadow: var(--shadow-3d);
+  border: 1.5px solid #E2E8F0;
+}
+
+.float-header-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.float-amount {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 6px;
+}
+
+.float-progress-track {
+  height: 9px;
+  background: #E2E8F0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.float-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #10B981 0%, #34D399 100%);
+  width: 100%;
+  border-radius: 10px;
+  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 3D Town Roadmap Section */
+.town-roadmap-wrapper {
+  margin: 4px 12px;
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 8px 10px;
+  border: 1.5px solid #E2E8F0;
+  box-shadow: var(--shadow-3d);
+}
+
+.town-roadmap-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9.5px;
+  font-weight: 800;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.town-road-container {
+  position: relative;
+  height: 72px;
+  width: 100%;
+}
+
+.town-road-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.buildings-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.town-building-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.building-3d-card {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.town-building-node.completed .building-3d-card {
+  background: #10B981;
+  border-color: #059669;
+  color: #FFFFFF;
+}
+
+.town-building-node.active .building-3d-card {
+  background: #F59E0B;
+  border-color: #D97706;
+  transform: scale(1.18);
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.4);
+}
+
+.building-emoji {
+  font-size: 13px;
+}
+
+.building-name {
+  font-size: 7px;
+  font-weight: 800;
+  color: #475569;
+  white-space: nowrap;
+}
+
+.avatar-pin-indicator {
+  font-size: 12px;
+  position: absolute;
+  top: -12px;
+}
+
+/* 3D Standing Character Stage with 3D Parallax & Outdoor Scenery Backdrop */
+.character-outdoor-stage-card {
+  margin: 6px 12px;
+  background: #FFFFFF;
+  border-radius: 22px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--shadow-3d);
+  border: 1.5px solid #CBD5E1;
+  position: relative;
+  perspective: 1000px;
+}
+
+.scenery-background-frame {
+  width: 100%;
+  height: 285px;
+  border-radius: 18px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  border: 1.5px solid #38BDF8;
+  transform-style: preserve-3d;
+  transition: background-image 0.5s ease-in-out, transform 0.2s ease-out;
+}
+
+/* Dynamic Round Theme Scenery 3D Render Backdrops (Clean & Pure 3D Environment) */
+.scenery-background-frame.theme-stage-0 {
+  background-image: url('/assets/bg_stage_0.jpg');
+}
+
+.scenery-background-frame.theme-stage-1 {
+  background-image: url('/assets/bg_stage_1.jpg');
+}
+
+.scenery-background-frame.theme-stage-2 {
+  background-image: url('/assets/bg_stage_2.jpg');
+}
+
+.scenery-background-frame.theme-stage-3 {
+  background-image: url('/assets/bg_stage_3.jpg');
+}
+
+.scenery-background-frame.theme-stage-4 {
+  background-image: url('/assets/bg_stage_4.jpg');
+}
+
+.scenery-background-frame.theme-stage-5 {
+  background-image: url('/assets/bg_stage_5.jpg');
+}
+
+/* Urdu Speech Bubble Card (Positioned Above Room Frame to Prevent Head Overlap) */
+.urdu-speech-bubble-gaming {
+  background: #FFFFFF;
+  border: 1.5px solid #93C5FD;
+  border-radius: 14px;
+  padding: 6px 12px;
+  position: relative;
+  width: 100%;
+  margin-bottom: 6px;
+  z-index: 10;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.speech-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.sparkle-icon {
+  color: #10B981;
+  font-size: 12px;
+}
+
+.character-name-age {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #10B981;
+}
+
+.translate-btn {
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  border-radius: 12px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #475569;
+  padding: 2px 7px;
+  cursor: pointer;
+}
+
+.translate-btn:active {
+  background: #E2E8F0;
+}
+
+.urdu-quote-text {
+  font-family: 'Noto Nastaliq Urdu', 'Outfit', serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #0F172A;
+  text-align: center;
+  line-height: 1.7;
+  direction: rtl;
+}
+
+.english-translation-text {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #334155;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.speech-pointer-triangle {
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 7px 7px 0 7px;
+  border-style: solid;
+  border-color: #FFFFFF transparent transparent transparent;
+}
+
+/* Pure 3D Code WebGL Character Canvas Container */
+.character-3d-canvas-box {
+  width: 100%;
+  height: 180px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.character-3d-canvas-box canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Soft Ground Shadow beneath Character Feet */
+.ground-shadow-ellipse {
+  position: absolute;
+  bottom: 8px;
+  width: 90px;
+  height: 15px;
+  background: rgba(0, 0, 0, 0.32);
+  border-radius: 50%;
+  filter: blur(4px);
+  z-index: 1;
+}
+
+/* Standing 3D Character Avatar Image - Transparent 3D Waving Fatima Avatar */
+.standing-character-img {
+  height: 155px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  z-index: 2;
+  position: relative;
+  margin-bottom: 2px;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+  animation: gentle-waving-float 3s ease-in-out infinite alternate;
+  transform-style: preserve-3d;
+}
+
+@keyframes gentle-waving-float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(1.5deg); }
+  100% { transform: translateY(-7px) rotate(-1.5deg); }
+}
+
+/* Option A Expression State Switching Animations & Effects */
+.standing-character-img.happy {
+  animation: happy-bounce 1.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 6px 12px rgba(16, 185, 129, 0.35));
+}
+
+@keyframes happy-bounce {
+  0% { transform: translateY(-2px) scale(1.02); }
+  100% { transform: translateY(-8px) scale(1.06); }
+}
+
+.standing-character-img.worried {
+  animation: worried-tremble 1.2s ease-in-out infinite alternate;
+  filter: drop-shadow(0 6px 12px rgba(245, 158, 11, 0.35));
+}
+
+@keyframes worried-tremble {
+  0% { transform: rotate(-2deg) translateY(0px) scale(0.98); }
+  100% { transform: rotate(2deg) translateY(3px) scale(0.96); }
+}
+
+.standing-character-img.sad {
+  animation: sad-droop 2s ease-in-out infinite alternate;
+  filter: grayscale(0.2) drop-shadow(0 4px 8px rgba(239, 68, 68, 0.3));
+}
+
+@keyframes sad-droop {
+  0% { transform: translateY(4px) scale(0.94); }
+  100% { transform: translateY(7px) scale(0.92); }
+}
+
+.standing-character-img.relieved {
+  animation: relieved-sigh 1.8s ease-in-out infinite alternate;
+  filter: drop-shadow(0 8px 16px rgba(59, 130, 246, 0.35));
+}
+
+@keyframes relieved-sigh {
+  0% { transform: translateY(-3px) scale(1.03); }
+  100% { transform: translateY(-6px) scale(1.07); }
+}
+
+.character-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.character-title-text {
+  font-size: 13px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.round-badge-pill {
+  background: #D1FAE5;
+  color: var(--dark-emerald);
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.character-desc-text {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #64748B;
+  width: 100%;
+  text-align: left;
+}
+
+/* Paperclip Note Card Layout */
+.paperclip-note-card {
+  margin: 6px 12px 12px 12px;
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 14px;
+  position: relative;
+  box-shadow: var(--shadow-3d);
+  border: 1.5px solid #E2E8F0;
+}
+
+.paperclip-icon {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 16px;
+}
+
+.note-title-header {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #0F172A;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.note-details-box {
+  background: #F8FAFC;
+  border: 1.5px dashed #CBD5E1;
+  border-radius: 12px;
+  padding: 8px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.note-detail-label {
+  font-size: 10.5px;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.note-detail-cost {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+/* Big 3D Tactile Buttons */
+.tactile-buttons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.btn-tactile {
+  border-radius: 14px;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-tactile:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-tactile-borrow {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: #FFFFFF;
+}
+
+.btn-tactile-borrow .btn-icon-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.btn-tactile-cut {
+  background: #FFFFFF;
+  color: #2563EB;
+  border: 2px solid #2563EB;
+}
+
+.btn-tactile-cut .btn-icon-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #EFF6FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 900;
+  color: #2563EB;
+}
+
+.btn-tactile-pay {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #047857 0%, #065F46 100%);
+  color: #FFFFFF;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+
+.btn-disabled {
+  background: #E2E8F0 !important;
+  color: #94A3B8 !important;
+  border: none !important;
+  cursor: not-allowed !important;
+  opacity: 0.55;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.hard-rule-prompt-box {
+  margin-top: 10px;
+  background: #F8FAFC;
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 9.5px;
+  color: #64748B;
+  line-height: 1.4;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Pre-Game 3D Rules Welcome Card */
+.welcome-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+
+.welcome-header-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.welcome-pill-badge {
+  background: #D1FAE5;
+  color: #047857;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+
+.welcome-main-title {
+  font-size: 15px;
+  font-weight: 900;
+  color: #0F172A;
+  letter-spacing: 0.5px;
+}
+
+.welcome-rules-box {
+  background: #F8FAFC;
+  border: 1.5px dashed #CBD5E1;
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.rule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 11px;
+  color: #0F172A;
+}
+
+.rule-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.btn-ready-play {
+  width: 100%;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: #FFFFFF;
+  padding: 14px;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+  border: 1.5px solid #34D399;
+}
+
+.btn-ready-play:active {
+  transform: translateY(2px);
+}
+
+/* Presenter-Locked 3D Waiting Sync Card */
+.waiting-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 14px;
+}
+
+.waiting-icon-pulse {
+  font-size: 32px;
+  animation: pulse-spin 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-spin {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.15) rotate(15deg); }
+}
+
+.waiting-title {
+  font-size: 16px;
+  font-weight: 900;
+  color: #0F172A;
+}
+
+.waiting-desc {
+  font-size: 11px;
+  color: #64748B;
+  line-height: 1.4;
+}
+
+.sync-status-badge {
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  color: #1E40AF;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.sync-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2563EB;
+  animation: pulse-dot-sync 1s infinite alternate;
+}
+
+@keyframes pulse-dot-sync {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+/* 3D Candy Crush Style Level Roadmap Welcome Screen Styles */
+.welcome-screen-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.welcome-top-badge-card {
+  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+  border-radius: 18px;
+  padding: 12px 14px;
+  color: #FFFFFF;
+  text-align: center;
+  border: 1px solid #334155;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.welcome-pill-badge {
+  display: inline-block;
+  background: #10B981;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.welcome-main-title {
+  font-size: 14px;
+  font-weight: 900;
+  color: #F8FAFC;
+  line-height: 1.2;
+}
+
+.welcome-sub-subtitle {
+  font-size: 10px;
+  color: #94A3B8;
+  margin-top: 2px;
+}
+
+/* Candy Crush Level Roadmap Card */
+.candy-roadmap-card {
+  background: linear-gradient(180deg, #F0F9FF 0%, #E0F2FE 100%);
+  border: 2px solid #7DD3FC;
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: 0 10px 24px rgba(125, 211, 252, 0.3);
+}
+
+.candy-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px dashed #93C5FD;
+}
+
+.candy-header-title {
+  font-size: 11.5px;
+  font-weight: 900;
+  color: #0369A1;
+  letter-spacing: 0.5px;
+}
+
+.candy-header-tag {
+  background: #0284C7;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.candy-level-path-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 4px;
+}
+
+.candy-path-track {
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 32px;
+  width: 4px;
+  background: repeating-linear-gradient(180deg, #0284C7 0px, #0284C7 8px, transparent 8px, transparent 14px);
+  z-index: 0;
+}
+
+.candy-node-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #FFFFFF;
+  border: 1.5px solid #BAE6FD;
+  border-radius: 14px;
+  padding: 6px 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.04);
+}
+
+.candy-node-row.active {
+  border-color: #10B981;
+  background: #ECFDF5;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
+}
+
+.candy-node-circle {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  border: 2px solid #94A3B8;
+}
+
+.candy-node-circle.glowing-star {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  border-color: #34D399;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+  animation: star-pulse 1.5s infinite alternate;
+}
+
+@keyframes star-pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.node-star-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #F59E0B;
+  color: #FFFFFF;
+  font-size: 7px;
+  font-weight: 900;
+  padding: 1px 4px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.candy-node-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.node-level-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.candy-node-row.active .node-level-title {
+  color: #047857;
+}
+
+.node-level-desc {
+  font-size: 9.5px;
+  color: #64748B;
+}
+
+/* Waving Character Avatar on Roadmap Path */
+.roadmap-character-stage {
+  margin-top: 8px;
+  background: radial-gradient(circle at center, #F0FDF4 0%, #DCFCE7 100%);
+  border-radius: 16px;
+  padding: 8px;
+  border: 1.5px solid #86EFAC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.roadmap-speech-bubble {
+  background: #FFFFFF;
+  border: 1.5px solid #93C5FD;
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-size: 10px;
+  color: #1E293B;
+  line-height: 1.35;
+  text-align: center;
+  margin-bottom: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.roadmap-bubble-arrow {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #FFFFFF;
+}
+
+/* 2-Column Compact Grid for 6 Level Nodes */
+.candy-grid-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.candy-mini-node {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFFFFF;
+  border: 1.5px solid #BAE6FD;
+  border-radius: 10px;
+  padding: 5px 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.candy-mini-node.active {
+  border-color: #10B981;
+  background: #ECFDF5;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.25);
+}
+
+.mini-node-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.mini-node-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.mini-node-text strong {
+  font-size: 10.5px;
+  color: #0F172A;
+}
+
+.mini-node-text span {
+  font-size: 8.5px;
+  color: #64748B;
+}
+
+/* Compact 3-Pill Rules Row */
+.rules-three-row {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+}
+
+.rule-mini-pill {
+  flex: 1;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+}
+
+.rule-mini-pill span {
+  font-size: 14px;
+}
+
+.rule-mini-pill div {
+  font-size: 8.5px;
+  color: #475569;
+  line-height: 1.2;
+}
+
+.rule-mini-pill div strong {
+  font-size: 9.5px;
+  color: #0F172A;
+}
+
+/* Real Mobile Device Full Viewport No-Scroll Overrides (<= 600px) */
+@media (max-width: 600px) {
+  html, body {
+    width: 100vw !important;
+    height: 100dvh !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .phone-device-chassis {
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-width: 100vw !important;
+    max-height: 100dvh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: #090D16 !important;
+  }
+
+  .phone-dynamic-island, .phone-side-button {
+    display: none !important;
+  }
+
+  .mobile-app-wrapper {
+    width: 100vw !important;
+    height: 100dvh !important;
+    border-radius: 0 !important;
+    padding: 4px 8px 6px 8px !important;
+    overflow-y: auto !important;
+    justify-content: space-between !important;
+  }
+
+  .hidden-screen {
+    display: none !important;
+  }
+
+  .welcome-screen-wrapper {
+    height: calc(100dvh - 35px);
+    max-height: calc(100dvh - 35px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    gap: 4px;
+  }
+
+  .gameplay-stage-wrapper {
+    min-height: calc(100dvh - 35px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start !important;
+    overflow-y: auto;
+    gap: 8px !important;
+  }
+
+  /* Restore 3D Outdoor Stage Card & Waving Fatima Avatar Display */
+  .character-outdoor-stage-card {
+    padding: 6px !important;
+    margin: 4px 0 !important;
+    border-radius: 18px !important;
+  }
+
+  .scenery-background-frame {
+    height: 185px !important;
+    min-height: 185px !important;
+    border-radius: 14px !important;
+  }
+
+  .standing-character-img {
+    height: 135px !important;
+    max-height: 135px !important;
+  }
+
+  .urdu-speech-bubble-gaming {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .urdu-quote-text {
+    font-size: 11.5px !important;
+    line-height: 1.4 !important;
+  }
+
+  .character-title-row {
+    margin-top: 4px !important;
+  }
+
+  .character-title-text {
+    font-size: 11px !important;
+  }
+
+  .character-desc-text {
+    font-size: 9.5px !important;
+  }
+
+  /* Float Slack HUD Card */
+  .float-hud-card {
+    padding: 10px 14px !important;
+    margin: 4px 0 !important;
+    border-radius: 14px !important;
+  }
+
+  .float-header-row {
+    font-size: 10px !important;
+  }
+
+  .float-amount {
+    font-size: 18px !important;
+    margin: 2px 0 !important;
+  }
+
+  .float-progress-track {
+    height: 8px !important;
+  }
+
+  /* Paperclip Note Decision Card Layout */
+  .paperclip-note-card {
+    padding: 12px 14px !important;
+    margin: 4px 0 !important;
+    border-radius: 18px !important;
+  }
+
+  .note-title-header {
+    font-size: 11.5px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .note-details-box {
+    padding: 6px 10px !important;
+    margin-bottom: 8px !important;
+    border-radius: 10px !important;
+  }
+
+  .note-detail-label {
+    font-size: 10px !important;
+  }
+
+  .note-detail-cost {
+    font-size: 17px !important;
+  }
+
+  .tactile-buttons-grid {
+    gap: 8px !important;
+  }
+
+  .btn-tactile {
+    padding: 10px 8px !important;
+    font-size: 11.5px !important;
+    border-radius: 12px !important;
+  }
+
+  .btn-tactile-pay {
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+  }
+
+  .btn-tactile .btn-icon-circle {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 12px !important;
+  }
+
+  .hard-rule-prompt-box {
+    font-size: 9.5px !important;
+    padding: 6px 8px !important;
+    margin-top: 6px !important;
+    line-height: 1.3 !important;
+  }
+
+  .btn-ready-play {
+    padding: 8px !important;
+    margin-top: 2px !important;
+  }
+
+  /* Verdict Receipt Card Safety Fitting */
+  #verdictCard {
+    max-height: calc(100dvh - 50px) !important;
+    overflow-y: auto !important;
+    padding: 12px !important;
+  }
+}
+
+/* 3D Gaming Thank You Banner Styles */
+.thank-you-header-box {
+  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+  color: #FFFFFF;
+  border: 1.5px solid #334155;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  margin-bottom: 8px;
+}
+
+.thank-you-badge {
+  display: inline-block;
+  background: #10B981;
+  color: #FFFFFF;
+  font-size: 9.5px;
+  font-weight: 900;
+  padding: 3px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.thank-you-title {
+  font-size: 16px;
+  font-weight: 900;
+  color: #F8FAFC;
+  line-height: 1.2;
+}
+
+.thank-you-subtitle {
+  font-size: 11px;
+  color: #94A3B8;
+  margin-top: 4px;
+}
+
